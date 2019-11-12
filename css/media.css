@@ -1,0 +1,169 @@
+@media screen and (max-width: 1440px) {}
+
+@media only screen and (max-width: 1367px) {
+    .topnav .sort {
+        width: 35%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .topnav .sort {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 1180px) {}
+
+@media only screen and (max-width: 1112px) {}
+
+@media only screen and (max-width: 1024px) {
+    .topnav .sort {
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 960px) {}
+
+@media only screen and (max-width: 847px) {
+    .column {
+        margin: 10px;
+    }
+
+    .topnav .sort {
+        width: 52%;
+    }
+
+    .video-wrap,
+    .video,
+    .video img {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 835px) {
+    .column {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 812px) {
+    .topnav .sort {
+        width: 56%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .topnav .sort {
+        width: 57%;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .topnav .sort button {
+        padding: 7px 22px;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .topnav .search {
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 668px) {
+    .topnav .sort button {
+        font-size: 13px;
+    }
+
+    .ng-binding {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .topnav .sort button {
+        font-size: 12px;
+    }
+
+    .ng-binding {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .topnav {
+        flex-direction: column;
+    }
+
+    .topnav .search {
+        width: 57%;
+        margin-top: 1%;
+    }
+
+    .topnav .sort {
+        width: 70%;
+    }
+
+    .sort p {
+        margin: 5px;
+    }
+
+    .topnav .sort button {
+        font-size: 13px;
+    }
+
+    .tagdat-wrap {
+        flex-direction: column;
+    }
+
+    .ng-binding {
+        margin-top: 2px;
+    }
+}
+
+@media screen and (max-width: 580px) {}
+
+@media screen and (max-width: 568px) {}
+
+@media screen and (max-width: 415px) {
+    .topnav .search {
+        width: 75%;
+    }
+
+    .topnav .sort {
+        width: 90%;
+    }
+
+    .sort p {
+        font-size: 13px;
+        margin-top: 8px;
+    }
+
+    .topnav .sort button {
+        padding: 7px 15px;
+    }
+}
+
+@media screen and (max-width: 384px) {
+    .column {
+        width: 80%;
+    }
+
+    .column h1 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 376px) {}
+
+@media screen and (max-width: 360px) {
+    .topnav .sort button {
+        padding: 6px 10px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .topnav .sort button {
+        padding: 6px;
+    }
+}

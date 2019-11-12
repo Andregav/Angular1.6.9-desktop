@@ -1,0 +1,68 @@
+@font-face{font-family:Roboto;src:url(../libr/font/Roboto-Regular.ttf)}
+@font-face{font-family:Roboto-Bold;src:url(../libr/font/Roboto-Bold.ttf)}
+@font-face{font-family:Roboto-Light;src:url(../libr/font/Roboto-Light.ttf)}
+@font-face{font-family:Roboto-Medium;src:url(../libr/font/Roboto-Medium.ttf)}
+body,html{font-family:Roboto,sans-serif;color:#363636}
+.head{background-image:url(../img/head@2x.jpg);background-size:cover;background-repeat:no-repeat;color:#fff}
+.head .head-wrap{display:flex;flex-direction:row;justify-content:space-around;align-content:center;width:1180px;margin-left:auto;margin-right:auto;padding-top:185px}
+.head .head-wrap #navbar{overflow:hidden;background-color:rgba(0,0,0,0);padding:0 10px;transition:.4s;position:fixed;width:1180px;top:0;z-index:99;margin-top:78px}
+.head .head-wrap #navbar img{border-radius:5px}
+.head .head-wrap #navbar a{color:#fff;text-align:center;padding:10px;text-decoration:none;font-size:18px;line-height:25px;border-radius:4px;font-family:Roboto,sans-serif}
+.head .head-wrap #navbar a .fab{font-size:18px;padding:0}
+.head .head-wrap #navbar #logo{float:left;font-size:35px;transition:.4s}
+.head .head-wrap #navbar-right{float:right;margin-top:1%}
+.head .hero h1{margin-top:0;padding-top:55px;text-transform:uppercase;font-family:Roboto-Bold,sans-serif;font-size:58px}
+.head .hero .hero_texteasy{font-size:32px;line-height:49px;font-family:Roboto-Light,sans-serif}
+.head .hero .hero_textfast{font-size:28px}
+.head .hero .hero_textfast img{vertical-align:top}
+.head .hero .hero_textnumber{display:flex;flex-direction:row;font-size:95px;font-family:Roboto-Light,sans-serif;line-height:121px;text-shadow:5px 4px 1px rgba(0,0,0,.2)}
+.head .hero .hero_textnumber img{margin-right:25px}
+.head .hero .hero_textuser{font-size:24px;font-family:Roboto-Light,sans-serif;line-height:31px;margin-left:117px;padding-bottom:77px;text-shadow:5px 4px 1px rgba(0,0,0,.2)}
+.head .openaccount{padding-top:19px;font-family:Roboto,sans-serif;width:380px}
+.head .openaccount h3{margin-bottom:0;text-transform:uppercase}
+.head .openaccount h3 span{font-family:Roboto-Bold,sans-serif;margin-bottom:30px}
+.head .openaccount input[type=email],.head .openaccount input[type=text]{width:100%;padding:12px;border:1px solid #d7dce0;box-sizing:border-box;margin-top:12px;resize:vertical;color:#363636}
+.head .openaccount .autocomplete{position:relative;display:inline-block;width:100%}
+.head .openaccount .autocomplete-items{position:absolute;border:1px solid #d4d4d4;border-bottom:none;border-top:none;z-index:99;top:100%;left:0;right:0;color:#363636}
+.head .openaccount .autocomplete-items div{padding:10px;cursor:pointer;background-color:#fff;border-bottom:1px solid #d4d4d4}
+.head .openaccount .autocomplete-items div:hover{background-color:#e9e9e9}
+.head .openaccount .autocomplete-active{background-color:#1e90ff!important;color:#fff}
+.head .openaccount .phone{display:flex;flex-direction:row}
+.head .openaccount .phone_code{border:1px solid #d7dce0;box-sizing:border-box;margin-top:12px;margin-bottom:16px;resize:vertical;color:#363636;padding:12px 12px 12px 15px;width:80px;margin-right:12px}
+.head .openaccount .phone_number{border:1px solid #d7dce0;box-sizing:border-box;margin-top:12px;margin-bottom:16px;resize:vertical;color:#363636;padding:12px;width:100%}
+.head .openaccount .icon-question{background:url(../img/email.svg) no-repeat;background-position:340px 10px;background-size:24px;background-color:#fff}
+.head .openaccount .icon-arrow{background:url(../img/arrow.svg) no-repeat;background-position:340px 20px;background-size:12px;background-color:#fff}
+.head .openaccount .checkbox{display:flex;flex-direction:row;width:100%}
+.head .openaccount .checkbox_box{margin:0;width:19px;height:19px;cursor:pointer}
+.head .openaccount .checkbox_text{font-size:14px;line-height:18px;margin-left:11px}
+.head .openaccount .checkbox_text a{color:#fff;text-decoration:underline}
+.head .openaccount button[type=submit]{width:100%;background-color:#f7941d;color:#fff;padding:12px 20px;border:none;border-radius:4px;cursor:pointer;font-family:Arial;font-size:26px}
+.head .openaccount button[type=submit]:hover{background-image:linear-gradient(#fee095,#fbcd4d,#f8ba04);color:#000}
+.head .openaccount form{margin-bottom:25px}
+.head .openaccount .openaccount_text{font-size:14px;line-height:18px;text-align:center;margin-bottom:50px}
+.head .openaccount .brands{margin-bottom:70px}
+.head .openaccount .brands1,.head .openaccount .brands2{display:flex;flex-direction:row;justify-content:space-around}
+.head .openaccount .brands1{margin-bottom:37px}
+.platforminfo{font-family:Roboto-Medium,sans-serif;padding-top:130px}
+.platforminfo .row{margin:0}
+.platforminfo .devices_img img{width:100%}
+.platforminfo .devices_alltext h1{font-size:40px;line-height:45px}
+.platforminfo .devices_text{font-family:Roboto-Light,sans-serif}
+.platforminfo .devices_text h3{color:#085b8a}
+.canceltrades{background-image:url(../img/canceltrades@2x.jpg);background-size:cover;background-repeat:no-repeat;text-align:center;color:#fff}
+.canceltrades h1{font-size:61px;line-height:70px;font-family:Roboto-Medium,sans-serif;padding-top:71px;margin-bottom:28px}
+.canceltrades h3{font-family:Roboto,sans-serif;font-size:26px;line-height:34px;width:580px;margin-left:auto;margin-right:auto;margin-bottom:46px}
+.canceltrades i{font-size:149px}
+.canceltrades h3:last-of-type{font-family:Roboto-Light,sans-serif;font-size:27px;line-height:40px}
+.canceltrades h2{font-family:Arial;font-size:43px;line-height:65px}
+.canceltrades h2 span{font-weight:600}
+.slideanim{visibility:hidden}
+.slide{animation-name:slide;-webkit-animation-name:slide;animation-duration:1s;-webkit-animation-duration:1s;visibility:visible}
+@keyframes slide{
+0%{opacity:0;transform:translateY(70%)}
+100%{opacity:1;transform:translateY(0)}
+}
+@-webkit-keyframes slide{
+0%{opacity:0;-webkit-transform:translateY(70%)}
+100%{opacity:1;-webkit-transform:translateY(0)}
+}
