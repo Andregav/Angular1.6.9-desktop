@@ -1,65 +1,173 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="videoApp">
+<html>
 
 <head>
-    <meta charset="utf-8" />
-    <title>MindGeek</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/media.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <meta name="keywords" content="affiliate, marketing">
+    <meta name="description" content="Affiliate Marketing">
+    <link rel="stylesheet" href="css/scss/style.css">
+    <!--<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />-->
+    <title>Affiliate Marketing</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
-<body ng-controller="videoCtrl">
-    <section>
-        <div class="topnav">
-            <input type="text" ng-model="search" placeholder="search..." title="Type in" name="search" class="search">
-            <div class="sort" id="myDIV">
-                <p>Order by</p>
-                <button ng-click="orderByMe('posttime')" class="btn active">Newest first</button>
-                <button ng-click="orderByMe('-posttime')" class="btn">Oldest first</button>
-                <button ng-click="orderByMe('rating')" class="btn">Rating</button>
-            </div>
-        </div>
-        <div>
-            <div class="row">
-                <div class="column slide" ng-repeat="video in videos | filter:search | orderBy:myOrderBy ">
-                    <h1 class=" title">{{video.title}}</h1>
-                    <div class="video-wrap">
-                        <a href="{{video.video_url}}" class="video"><img src="{{video.thumbnail_url}}" alt="Video"></a>
-                        <div class="rating-wrap">
-                            <svg class="thumb" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg10" width="58" height="55" viewBox="0 0 58 55" sodipodi:docname="thumb.svg" inkscape:version="0.92.3 (2405546, 2018-03-11)">
-                                <metadata id="metadata16">
-                                    <rdf:RDF>
-                                        <cc:Work rdf:about="">
-                                            <dc:format>image/svg+xml</dc:format>
-                                            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-                                            <dc:title></dc:title>
-                                        </cc:Work>
-                                    </rdf:RDF>
-                                </metadata>
-                                <defs id="defs14" />
-                                <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1920" inkscape:window-height="1001" id="namedview12" showgrid="false" inkscape:zoom="14.690909" inkscape:cx="29" inkscape:cy="27.5" inkscape:window-x="-9" inkscape:window-y="-9" inkscape:window-maximized="1" inkscape:current-layer="svg10" />
-                                <image width="58" height="55" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAA3CAYAAABdJVn2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzUwNDY3NDRGODEyMTFFOEFGQjk4Mzg5Q0E1MUM1MTIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzUwNDY3NDVGODEyMTFFOEFGQjk4Mzg5Q0E1MUM1MTIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozNTA0Njc0MkY4MTIxMUU4QUZCOTgzODlDQTUxQzUxMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozNTA0Njc0M0Y4MTIxMUU4QUZCOTgzODlDQTUxQzUxMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PvaF0sUAAARRSURBVHja5JtvaBt1GMe/rR2nTTGceFRM6y65bh12tWsb6pbIxvLCFw5HOyb6ohFcdWwvprgXCi1sr/wTwYGudQFd34gWp7KgdRsBpRhJZa2b12bUlqQTUyVVTBFSubDB413qWFKzNXfN7e7iA8/xO3LJ7z55Ls+/3y9VRATjZZn/6ZvzV2PplbN7HO3wdAhOlsmd/lyWKRRQYzXFh/yc8m0XKmOnzkPD9EOK+HLMYzTogXTIT+xqyHzlemhkfv2wBoMmnhr03gbyX2XcJyhG64M1FjQWoDasDQow1DOSpvXMVW2kC0p+dwFiSVdmce7ct/JRuxgKOj0RLfna7NhFXLYm6CxmRRU2SiaxaEnQpYl3xibv3HSGgWYnoy9GVL0jg7//shzoEs6eGpaPaqQOtXaLgWanTtGbZ1X60MZG1FsqBUyFyM+VEjtXJQ3+EEmWSRgkkQJuRjVkORIG45P3UpQ9TGHJ/Cng3URSkxhwE6MFUta2QIzMntQ/JOvJlFyhcBohwfXRV2nzVy9HKRGk3YxGSFm9gwlfOe6lStcOQ3bK/dZjXROvTmpNx1l07t8f7mDXCrFNcY/HdZVztF/ydAjzLFOkK6Gfh53jP+zhNFtSs9pa6dBnc0ooelLvR9cle9gPNHvYsihDzUfClMqD1SOMnI70a/ew5YTdHUxQPujWlRCwbkieMjP88NMOE0DeiL9+CuXyDAVUzlaCe9TdnM3ZTUFRugHopFR46GirzRxwq6zqD0kroJPHBW0f0hZQGlYyqPRGyM+YELIw2ahemE9o8/xiDPHcIP757FQWZpdylGk/wgJSDtDr5sVjsdPdogw2V6OShetFtzc32lZTuZQM9p4YgI9BleF9XV3FdxJDvfVOUzSwdZXL05jLW3KsXNClcYizoMoHxTVcu26StRd9ZQM21PwfQBsfx47mFY9b0aDCgX3Yjkq3KNeHd1/qdKLiQTe2QGAL+0aVCTp9BQmAKh+01OqF6xnGTEbp5CUx1u8GYzWqVvnRxU2PWxyUPYyPRp7DFpuSFzdg12uf4G2vxTzunp1oXtOiDzagvsCEDjzQYCVML15+ttDjFge9cgaj+a2RxVF8GrZOaeYOvIfnXf/t1BepR0UMdAm4sO8JbKlbxPcff4HpZYtwthzD6VceGSjmU4oX3tlfERl5HxGrOaGaGtwFvF6y17Ws3GfHvbcKLw0uQeNv/lG05gZNaPewpuBkt25C461eJElEsNtJNu2delAqwh/fZTd4KeJmV17vhWCeSOLTCzPbomcCzxz0bSI7cwdBhX4av80+Bz1Xu3nK/M5f+jLQfdCn7olRrxwd+VrabIZdKXnQZbY046C+UKqL1ti4bMSGZJ6kNB+PjvqGjr1Ae7dvJM6mBdBOnb2DNJbMWZI3dg9DacIrh+U/fqn9cyF+/8VEuks5z8xHa6PxTF6WXZdp8njGXXVyFBF2RNsfdvym5l8U/wgwAPGBIMwTC3R1AAAAAElFTkSuQmCC" id="image18" x="0" y="0" />
-                            </svg>
-                            <p>{{video.rating | number:0}}</p>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <header></header>
+    <main>
+        <div class="main_width">
+            <div class="main_position">
+                <aside>
+                    <div class="aside__select-sity">
+                        <h2 class="aside__title">city</h2>
+                        <div class="custom-select">
+                            <select>
+                                <option value="1" class="dropdowm_item">London</option>
+                                <option value="2">City 2</option>
+                                <option value="3">City 3</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="tagdat-wrap">
-                        <div class="tags-wrap" id="myUL">
-                            <div class="tags" ng-repeat="item in video.tags">{{item}}</div>
+                    <div>
+                        <h2 class="aside__title">categories</h2>
+                        <div class="aside__categor">
+                            <div class="categor__item-wrap">
+                                <label for="archit" class="categor__item">Architecture
+                                    <input type="checkbox" id="archit">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <span class="categor__amount">(11)</span>
+                            </div>
+                            <div class="categor__item-wrap">
+                                <label for="business" class="categor__item">Business
+                                    <input type="checkbox" id="business">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <span class="categor__amount">(3)</span>
+                            </div>
+                            <div class="categor__item-wrap">
+                                <label for="design" class="categor__item">Design
+                                    <input type="checkbox" id="design">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <span class="categor__amount">(5)</span>
+                            </div>
+                            <div class="categor__item-wrap">
+                                <label for="dev" class="categor__item">Development
+                                    <input type="checkbox" id="dev">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <span class="categor__amount">(8)</span>
+                            </div>
+                            <div class="categor__item-wrap">
+                                <label for="market" class="categor__item">Marketing
+                                    <input type="checkbox" id="market">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <span class="categor__amount">(2)</span>
+                            </div>
+                            <div class="categor__item-wrap">
+                                <label for="photo" class="categor__item">Photography
+                                    <input type="checkbox" id="photo">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <span class="categor__amount">(6)</span>
+                            </div>
                         </div>
-                        <div id="input">{{video.posttime | date:"dd-MM-yyyy hh:mm"}}</div>
                     </div>
-                </div>
+                    <div>
+                        <h2 class="aside__title">price</h2>
+                        <div class="aside__rangeslider">
+                            <input value="5" min="0" max="15" type="range">
+                            <input value="10" min="0" max="15" type="range">
+                            <span class="rangeslider__value"></span>
+                            <button class="rangeslider__button">filter</button>
+                        </div>
+                    </div>
+                </aside>
+                <section>
+                    <div class="card">
+                        <div class="card__img_wrap">
+                            <img src="images/card-img1.png" alt="card1">
+                            <div class="card__city">London</div>
+                        </div>
+                        <div class="card__info">
+                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online </p>
+                            <div class="card_infodown">
+                                <p class="card__categ">Architecture</p>
+                                <p class="card__amount">$115</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__img_wrap">
+                            <img src="images/card-img1.png" alt="card1">
+                            <div class="card__city">London</div>
+                        </div>
+                        <div class="card__info">
+                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online </p>
+                            <div class="card_infodown">
+                                <p class="card__categ">Architecture</p>
+                                <p class="card__amount">$115</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__img_wrap">
+                            <img src="images/card-img1.png" alt="card1">
+                            <div class="card__city">London</div>
+                        </div>
+                        <div class="card__info">
+                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online </p>
+                            <div class="card_infodown">
+                                <p class="card__categ">Architecture</p>
+                                <p class="card__amount">$115</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__img_wrap">
+                            <img src="images/card-img1.png" alt="card1">
+                            <div class="card__city">London</div>
+                        </div>
+                        <div class="card__info">
+                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online </p>
+                            <div class="card_infodown">
+                                <p class="card__categ">Architecture</p>
+                                <p class="card__amount">$115</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__img_wrap">
+                            <img src="images/card-img1.png" alt="card1">
+                            <div class="card__city">London</div>
+                        </div>
+                        <div class="card__info">
+                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online </p>
+                            <div class="card_infodown">
+                                <p class="card__categ">Architecture</p>
+                                <p class="card__amount">$115</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__img_wrap">
+                            <img src="images/card-img1.png" alt="card1">
+                            <div class="card__city">London</div>
+                        </div>
+                        <div class="card__info">
+                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online </p>
+                            <div class="card_infodown">
+                                <p class="card__categ">Architecture</p>
+                                <p class="card__amount">$115</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-    </section>
-    <footer class="text-center">
-        <div></div>
-    </footer>
+    </main>
+    <footer>{{myWelcome}}</footer>
     <script src="js/common.js"></script>
 </body>
 
