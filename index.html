@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" ng-app="dataApp">
 
 <head>
     <meta charset="utf-8">
@@ -6,12 +7,12 @@
     <meta name="keywords" content="affiliate, marketing">
     <meta name="description" content="Affiliate Marketing">
     <link rel="stylesheet" href="css/scss/style.css">
-    <!--<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />-->
     <title>Affiliate Marketing</title>
+    <!--<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl">
+<body ng-controller="dataCtrl">
     <header></header>
     <main>
         <div class="main_width">
@@ -20,146 +21,43 @@
                     <div class="aside__select-sity">
                         <h2 class="aside__title">city</h2>
                         <div class="custom-select">
-                            <select>
-                                <option value="1" class="dropdowm_item">London</option>
-                                <option value="2">City 2</option>
-                                <option value="3">City 3</option>
+                            <select ng-model="city" ng-options="city.city for (city, city) in data">
                             </select>
                         </div>
                     </div>
                     <div>
                         <h2 class="aside__title">categories</h2>
                         <div class="aside__categor">
-                            <div class="categor__item-wrap">
-                                <label for="archit" class="categor__item">Architecture
-                                    <input type="checkbox" id="archit">
+                            <div class="categor__item-wrap" ng-repeat="categ in data | unique: 'category'">
+                                <label for="{{categ.id}}" class="categor__item">{{categ.category}}
+                                    <input type="checkbox" id="{{categ.id}}" ng-model="categ.on">
                                     <span class="checkmark"></span>
                                 </label>
                                 <span class="categor__amount">(11)</span>
-                            </div>
-                            <div class="categor__item-wrap">
-                                <label for="business" class="categor__item">Business
-                                    <input type="checkbox" id="business">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <span class="categor__amount">(3)</span>
-                            </div>
-                            <div class="categor__item-wrap">
-                                <label for="design" class="categor__item">Design
-                                    <input type="checkbox" id="design">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <span class="categor__amount">(5)</span>
-                            </div>
-                            <div class="categor__item-wrap">
-                                <label for="dev" class="categor__item">Development
-                                    <input type="checkbox" id="dev">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <span class="categor__amount">(8)</span>
-                            </div>
-                            <div class="categor__item-wrap">
-                                <label for="market" class="categor__item">Marketing
-                                    <input type="checkbox" id="market">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <span class="categor__amount">(2)</span>
-                            </div>
-                            <div class="categor__item-wrap">
-                                <label for="photo" class="categor__item">Photography
-                                    <input type="checkbox" id="photo">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <span class="categor__amount">(6)</span>
                             </div>
                         </div>
                     </div>
                     <div>
                         <h2 class="aside__title">price</h2>
                         <div class="aside__rangeslider">
-                            <input value="5" min="0" max="15" type="range">
-                            <input value="10" min="0" max="15" type="range">
+                            <input value="1" min="{{minPrice}}" max="{{maxPrice}}" type="range" data-ng-model="ui.min">
+                            <input value="200" min="{{minPrice}}" max="{{maxPrice}}" type="range" data-ng-model="ui.max">
                             <span class="rangeslider__value"></span>
                             <button class="rangeslider__button">filter</button>
                         </div>
                     </div>
                 </aside>
                 <section>
-                    <div class="card">
+                    <div class="card" ng-repeat="card in data | categoryFilter:(data|filter:{on:true}) | filter:city | rangeFilter:'price':ui.min:ui.max | orderBy:ui.sort">
                         <div class="card__img_wrap">
-                            <img src="images/card-img1.png" alt="card1">
-                            <div class="card__city">London</div>
+                            <img src="{{card.image}}" alt="card">
+                            <div class="card__city">{{card.city}}</div>
                         </div>
                         <div class="card__info">
-                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online </p>
+                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online</p>
                             <div class="card_infodown">
-                                <p class="card__categ">Architecture</p>
-                                <p class="card__amount">$115</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__img_wrap">
-                            <img src="images/card-img1.png" alt="card1">
-                            <div class="card__city">London</div>
-                        </div>
-                        <div class="card__info">
-                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online </p>
-                            <div class="card_infodown">
-                                <p class="card__categ">Architecture</p>
-                                <p class="card__amount">$115</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__img_wrap">
-                            <img src="images/card-img1.png" alt="card1">
-                            <div class="card__city">London</div>
-                        </div>
-                        <div class="card__info">
-                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online </p>
-                            <div class="card_infodown">
-                                <p class="card__categ">Architecture</p>
-                                <p class="card__amount">$115</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__img_wrap">
-                            <img src="images/card-img1.png" alt="card1">
-                            <div class="card__city">London</div>
-                        </div>
-                        <div class="card__info">
-                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online </p>
-                            <div class="card_infodown">
-                                <p class="card__categ">Architecture</p>
-                                <p class="card__amount">$115</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__img_wrap">
-                            <img src="images/card-img1.png" alt="card1">
-                            <div class="card__city">London</div>
-                        </div>
-                        <div class="card__info">
-                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online </p>
-                            <div class="card_infodown">
-                                <p class="card__categ">Architecture</p>
-                                <p class="card__amount">$115</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card__img_wrap">
-                            <img src="images/card-img1.png" alt="card1">
-                            <div class="card__city">London</div>
-                        </div>
-                        <div class="card__info">
-                            <p class="card__text">Affiliate Marketing - A Beginner's Guide to Earning Online </p>
-                            <div class="card_infodown">
-                                <p class="card__categ">Architecture</p>
-                                <p class="card__amount">$115</p>
+                                <p class="card__categ">{{card.category}}</p>
+                                <p class="card__amount">${{card.price}}</p>
                             </div>
                         </div>
                     </div>
@@ -167,8 +65,8 @@
             </div>
         </div>
     </main>
-    <footer>{{myWelcome}}</footer>
-    <script src="js/common.js"></script>
+    <footer></footer>
+    <script type="module" src="js/common.js"></script>
 </body>
 
 </html>

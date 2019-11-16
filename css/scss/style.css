@@ -63,7 +63,8 @@ main {
   display: flex; }
 
 aside {
-  width: 270px; }
+  width: 270px;
+  margin-bottom: 160px; }
 
 .aside__select-sity {
   margin-bottom: 60px; }
@@ -77,17 +78,25 @@ aside {
 
 .custom-select {
   position: relative;
+  width: 240px; }
+
+select {
+  position: relative;
   width: 240px;
   font-family: Raleway;
   border: 1px solid #dee0e1;
   font-size: 15px;
-  line-height: 15px;
-  box-sizing: border-box; }
+  line-height: 17px;
+  color: #4c505b;
+  padding: 15px 15px 16px 15px;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none; }
 
-.custom-select select {
-  display: none; }
-
-.select-selected:after {
+.custom-select:after {
   position: absolute;
   content: "";
   top: 17px;
@@ -96,34 +105,20 @@ aside {
   height: 0;
   border: solid #33363e;
   border-width: 0 3px 3px 0;
+  background-color: #fff;
   display: inline-block;
   padding: 3px;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg); }
 
-.select-items div,
-.select-selected {
-  color: #4c505b;
-  padding: 14px 15px 15px 15px;
-  cursor: pointer;
-  user-select: none; }
-
-.select-items div {
-  border: 1px solid #dee0e1; }
-
-.select-items {
-  position: absolute;
+.dropdowm_item {
   background-color: #fff;
+  border: 1px solid #dee0e1;
   top: 100%;
   left: 0;
-  right: 0;
-  z-index: 99; }
+  right: 0; }
 
-.select-hide {
-  display: none; }
-
-.select-items div:hover,
-.same-as-selected {
+.dropdowm_item:hover {
   background-color: rgba(0, 0, 0, 0.1); }
 
 .aside__categor {
@@ -296,26 +291,39 @@ aside {
   color: #fff;
   font-size: 14px;
   font-family: 'Montserrat Medium';
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  cursor: pointer; }
 
 section {
   width: 870px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin-bottom: 50px; }
 
 .card {
   width: 270px;
+  max-height: 327px;
   border: 1px solid #e9e9e9;
   box-sizing: border-box;
-  margin-bottom: 30px;
+  margin: 15px 15px;
   cursor: pointer; }
   .card img {
     position: relative;
     object-fit: cover;
-    width: 270px;
+    width: 100%;
     height: 180px; }
+
+.card:first-child {
+  margin-left: 0px; }
+
+.card:nth-child(3n) {
+  margin-right: 0px; }
+
+.card:nth-child(4n) {
+  margin-left: 0px; }
+
+.card:last-child {
+  margin-bottom: 30px; }
 
 .card:hover {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15); }
@@ -333,7 +341,7 @@ section {
 .card__img_wrap {
   position: relative;
   margin-bottom: 17px;
-  width: 270px;
+  width: 100%;
   height: 180px; }
 
 .card__city {
